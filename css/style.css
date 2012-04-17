@@ -1001,3 +1001,32 @@ html ul.tabs li.active a {
 
 /* END FOOTER STYLES
 ----------------------------------------------------------------------------------------*/
+
+.edit-cart-item:hover,
+.remove-cart-item:hover {
+	text-decoration: none;
+}
+.edit-cart-item {
+	text-decoration: none;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: url("../img/glyphicons-halflings.png");
+	background-position: 0px -72px;
+	background-repeat: no-repeat;
+	*margin-right: .3em;
+}
+.remove-cart-item {
+	text-decoration: none;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: url("../img/glyphicons-halflings.png");
+	background-position: -457px 0px;
+	background-repeat: no-repeat;
+	*margin-right: .3em;
+}

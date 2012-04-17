@@ -34,8 +34,9 @@
 			<div class="left-panel">
 				<ul class="tabs">
 					<li ><a href="#tab1">Nail Heads</a></li>
-					<li ><a href="#tab2">Model/Size</a></li>					
 					<li class="div"></li>
+					<li ><a href="#tab2">Model/Size</a></li>					
+					
 				</ul>
 				<div class="tab-container">
 					<div id="tab1" class="tab-content">

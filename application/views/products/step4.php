@@ -130,8 +130,8 @@
 											</select>
 							</td>
 							<td class="money">$<span><?php echo number_format($s['price'], 2, '.', ' ') ?></span><br /><br />
-								<a href="?edit=<?php echo $s['id'] ?>" class="cbtn edit" style="color:#888888; border:1px solid #dddddd; padding:4px;">edit</a><br/><br/>
-								<a href="?remove=<?php echo $s['id'] ?>" class="cbtn remove cartupdate" style="color:#888888; border:1px solid #dddddd; padding:4px;">remove</a>
+								<a href="?edit=<?php echo $s['id'] ?>" class="edit-cart-item" title="Edit Item">&nbsp;</a>&nbsp;&nbsp;
+								<a href="?remove=<?php echo $s['id'] ?>" class="remove-cart-item" title="Remove Item">&nbsp;</a>
 							</td>
 						</tr>
 					<?php

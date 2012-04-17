@@ -34,10 +34,12 @@
 			</div>
 			<div class="left-panel">
 				<ul class="tabs">
-					<li ><a href="#tab1">Fabrics</a></li>
-					<li ><a href="#tab2">Leather</a></li>
-					<li ><a href="#tab3" style="font-size:13px; width:70px;">Model/Size</a></li>
+					<li class="fabric-tab"><a href="#tab1">Fabrics</a></li>
 					<li class="div"></li>
+					<li class="leather-tab"><a href="#tab2">Leather</a></li>
+					<li class="div"></li>
+					<li class="model-tab"><a href="#tab3" style="font-size:13px; width:70px;">Model/Size</a></li>
+					
 				</ul>
 				<div class="tab-container">
 					<div id="tab1" class="tab-content">
@@ -216,17 +218,27 @@
 			
 			error = '';
 			error += validate('category', 'Category');
+			if(error != ''){activate_tab('#tab3');}//activate tab#3
 			error += validate('model', 'Model');
-			error += validate('size', 'Size');							
+			if(error != ''){activate_tab('#tab3');}//activate tab#3
+			error += validate('size', 'Size');
+			if(error != ''){activate_tab('#tab3');}//activate tab#3							
 			
 			if (error != '')
 			{				 
-				 $.floatingMessage(error, { height : 60, width:200,
-				  time:3000  });  
+				$.floatingMessage(error, { height : 60, width:200,time:3000  });  
 				return false;
 			}
 				//parent.location.href = '<?= base_url() ?>register/step2';
 
         });
+
+        function activate_tab(tab_id)
+        {
+        	$("ul.tabs li").removeClass("active"); //Remove any "active" class
+        	$('li.model-tab').addClass("active"); //Add "active" class to model tab
+        	$(".tab-content").hide(); //Hide all content
+        	$(tab_id).fadeIn(); //Fade in the active content
+        }
 	});
 </script>

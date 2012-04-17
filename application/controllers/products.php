@@ -141,7 +141,7 @@ class Products extends MY_Controller {
   
   public function checkout() {
 	$this->form_validation->set_rules('model', 'Model', 'trim');
-	$_SESSION['shoppingcart'] = null;	
+	//$_SESSION['shoppingcart'] = null;	
 	if ($this->form_validation->run() == FALSE)
 	{		
 		if (isset($_GET["remove"]))
