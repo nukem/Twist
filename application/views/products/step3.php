@@ -1,3 +1,8 @@
+<style>
+.error {
+	border: 1px solid red;
+}
+</style>
 <?php //print_r($shoppingcart) ?>
 <form action="" method="post" class="uniform">
 <div class="box-container">

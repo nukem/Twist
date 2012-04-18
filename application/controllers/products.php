@@ -142,6 +142,12 @@ class Products extends MY_Controller {
   public function checkout() {
 	$this->form_validation->set_rules('model', 'Model', 'trim');
 	//$_SESSION['shoppingcart'] = null;	
+	
+		$data['sizes'] = $this->base_model->wp_item('size',array(),'*', false);
+		$data['categories'] = $this->base_model->wp_item('category',array(),'*', false);
+		$data['models'] = $this->base_model->wp_item('model',array(),'*', false);
+
+		
 	if ($this->form_validation->run() == FALSE)
 	{		
 		if (isset($_GET["remove"]))
@@ -169,10 +175,19 @@ class Products extends MY_Controller {
 	{
 		$data['title'] = '';
 		$data['main_content'] = 'products/step4.php';		
-		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;	
+		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;
+		pr($data);	
 		$this->load->view('template', $data);
 		
 		//redirect('/products/thankyou/');	
 	}
+  }
+  
+  function update_cart_item()
+  {
+  	if($_POST)
+  	{
+  		
+  	}
   }
 }

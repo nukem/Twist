@@ -26,6 +26,10 @@
 		.totals .hr { margin: 4px 0 0 0; clear: left; }
 
 
+.error {
+	border: 1px solid red;
+}
+
 </style>
 <form action="" method="post" class="uniform">
 <div class="box-container">
@@ -68,6 +72,8 @@
 					<thead>
 					<tr>
 						<th >Suggested Items</th>
+						<th style="text-align:left;width:146px;">&nbsp;</th>
+						<th style="text-align:left">&nbsp;</th>						
 						<th style="text-align:right">Unit</th>
 						<th style="text-align:right">Qty.</th>
 						<th style="text-align:right">Price</th>
@@ -83,6 +89,8 @@
 								<p>Cover: <em>Color #183933</em></p>							
 							</div>
 						</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 						<td class="money">$215.00<input type="hidden" name="price[4372]" value="215.00" /></td>
 						<td class="money"><select>
 										<option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -90,7 +98,7 @@
 										</select>
 						</td>
 						<td class="money">$<span>215.00</span><br /><br />
-							<a href="" class="cbtn remove cartupdate" style="color:#888888; border:1px solid #dddddd; padding:4px;">add item</a>
+							
 						</td>
 					</tr>					
 				</tbody>
@@ -102,6 +110,8 @@
 				<thead>
 					<tr>
 						<th >Item Description</th>
+						<th style="text-align:left">Model</th>
+						<th style="text-align:left">Size</th>
 						<th style="text-align:right">Unit</th>
 						<th style="text-align:right">Qty.</th>
 						<th style="text-align:right">Price</th>
@@ -114,15 +124,40 @@
 					$total = $total + $s['price'];
 					?>
 					<tr >													
-							<td style="width:400px">
+							<td style="width:320px">
 								<div class="cartthumb"><img src="<?= base_url() ?>images/banners/products/details/image1.jpg" alt="Giselle King Headboard"></div>
 								<div class="cartfabric"><a><img src="<?= base_url() ?>images/banners/products/905501.jpg" alt="Lotus" /></a></div>
 								<div class="cartdesc"><br/>
 									<h5># 358533 - Manchester King Headboard</h5><br/>
-									<p>Category: <em><b><?php echo $s['category'] ?></b></em>, Model: <em><b><?php echo $s['model'] ?></b></em>, Size: <em><b><?php echo $s['size'] ?></b></em></p>
+									
 								</div>
 							</td>
-										<td class="money">$<?php echo number_format($s['price'], 2, '.', ' ') ?><input type="hidden" name="price[4372]" value="<?php echo number_format($s['price'], 2, '.', ' ') ?>" /></td>
+							<td>
+											<select  id="model" name="model">
+												<option value="">Select Models</option>
+												<?php 
+												foreach($models as $model) {
+													$selected = ($s['model'] == $model['title'])?' selected="selected"':'';
+												?>
+													<option <?php echo $selected;?> value="<?php echo $model['title'] ?>"><?php echo $model['title'] ?></option>
+												<?php
+												}
+												?>
+											</select>
+							</td><td>	
+											<select  id="model" name="model">
+												<option value="">Select Size</option>
+												<?php 
+												foreach($sizes as $size) {
+													$selected = ($s['size'] == $size['title'])?' selected="selected"':'';
+												?>
+													<option <?php echo $selected;?> value="<?php echo $size['title'] ?>"><?php echo $size['title'] ?></option>
+												<?php
+												}
+												?>
+											</select>										
+							</td>
+							<td class="money">$<?php echo number_format($s['price'], 2, '.', ' ') ?><input type="hidden" name="price[4372]" value="<?php echo number_format($s['price'], 2, '.', ' ') ?>" /></td>
 							<td class="money">
 								<select>
 											<option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option>

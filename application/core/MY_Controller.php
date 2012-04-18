@@ -17,3 +17,10 @@ class MY_Controller extends CI_Controller {
   }
 
 }
+
+function pr($param)
+{
+	echo '<pre style="padding:12px;background-color:white;color:black;">';
+	print_r($param);
+	echo '</pre>';
+}
