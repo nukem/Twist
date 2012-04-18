@@ -183,11 +183,31 @@ class Products extends MY_Controller {
 	}
   }
   
-  function update_cart_item()
-  {
-  	if($_POST)
-  	{
-  		
-  	}
-  }
+	function update_cart_item()
+	{
+	  	if($_POST)
+	  	{
+	  		$data = $_POST;
+	  		unset($data['id']);
+	  		$this->db->update('shop_order_items', $data, array('id' => $_POST['id']));
+	  		echo json_encode($_POST);
+	  	}
+	}
+  
+	function model_details($title = '')
+	{
+		$title = $this->input->post('title');
+		$conditions = array(
+			'wp_structure.title' => $title
+		);
+		$model = $this->base_model->wp_item('model', $conditions,'*', false);
+		if(empty($model))
+		{
+			$data['error'] = TRUE;
+		} else {
+			$data['error'] = FALSE;
+			$data['model'] = $model[0];
+		}
+		echo json_encode($data);
+	}
 }

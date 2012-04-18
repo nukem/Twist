@@ -126,6 +126,7 @@
 											</select>											
 										</div>
 										<br style="clear:both" /><br/>
+										<div id="option-text-container"></div>
 									<div class="clear"></div>
 								</div>								
 							</div>

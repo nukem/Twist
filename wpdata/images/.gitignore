@@ -1,0 +1,11 @@
+#all images
+*.jpg
+*.jpeg
+*.apng
+*.gif
+*.png
+.DS_Store*
+Thumbs.db
+Icon?
+ehthumbs.db
+*

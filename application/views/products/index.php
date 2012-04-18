@@ -140,7 +140,7 @@
 										<div class="clear"></div><br/>
 										<label>Models :</label>
 										<div class="select-fields">
-											<select  id="model" name="model">
+											<select  id="model" name="model" onchange="fetch_model_details(this);">
 												<option value="">Select Models</option>
 												<?php 
 												foreach($models as $s) {
@@ -166,6 +166,7 @@
 											</select>											
 										</div>
 										<br style="clear:both" /><br/>
+										<div id="option-text-container"></div>
 									<div class="clear"></div>
 								</div>
 							</div>

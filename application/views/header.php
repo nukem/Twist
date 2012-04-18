@@ -1,3 +1,11 @@
+<style>
+.cart-icon-link:hover,
+.cart-icon-link{
+	text-decoration: none;
+	color: white;
+}
+
+</style>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -33,7 +41,7 @@
 			</div>
 
 			<div class="shopping-cart-info">
-				<i class="shopping-cart-icon"></i><span>4</span>
+				<a href="/products/checkout" class="cart-icon-link"><i class="shopping-cart-icon"></i><span>4</span></a>
 			</div>
 			
 		</div>

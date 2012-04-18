@@ -122,6 +122,7 @@
 					$total = 0;
 					foreach($shoppingcart_all as $s) {
 					$total = $total + $s['price'];
+
 					?>
 					<tr >													
 							<td style="width:320px">
@@ -133,8 +134,7 @@
 								</div>
 							</td>
 							<td>
-											<select  id="model" name="model">
-												<option value="">Select Models</option>
+											<select  id="model_<?php echo $s['id'];?>" name="model" onchange="update_cart_item(<?php echo $s['id'];?>);">
 												<?php 
 												foreach($models as $model) {
 													$selected = ($s['model'] == $model['title'])?' selected="selected"':'';
@@ -145,8 +145,7 @@
 												?>
 											</select>
 							</td><td>	
-											<select  id="model" name="model">
-												<option value="">Select Size</option>
+											<select  id="size_<?php echo $s['id'];?>" name="size" onchange="update_cart_item(<?php echo $s['id'];?>);">
 												<?php 
 												foreach($sizes as $size) {
 													$selected = ($s['size'] == $size['title'])?' selected="selected"':'';
@@ -202,3 +201,20 @@
 </div>
 </form>
 <br /><br /><br /><br />
+
+<script type="text/javascript" defer="defer">
+var base_url = '<?php echo base_url();?>';
+
+function update_cart_item(id)
+{
+	size = $("#size_"+id).val();
+	model = $("#model_"+id).val();
+	jQuery.ajax({
+		url: base_url + 'products/update_cart_item',
+		type: "POST",
+		data: 'size='+size+'&model='+model+'&id='+id
+	}).done(function(data){
+		console.log(data);
+	});
+}
+</script>

@@ -42,3 +42,23 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+// FETCH MODEL DETAILS
+
+function fetch_model_details(item)
+{
+	title = $(item).val();
+	jQuery.ajax({
+		url: base_url + 'products/model_details',
+		type: "POST",
+		dataType: 'json',
+		data: 'title='+title
+	}).done(function(data){
+		if(data.error === false)
+		{
+			$("#option-text-container").html(data.model.description);
+		} else {
+			$("#option-text-container").html('');
+		}
+	});
+}
