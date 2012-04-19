@@ -168,7 +168,8 @@ class Products extends MY_Controller {
 		
 		$data['title'] = '';
 		$data['main_content'] = 'products/step4.php';		
-		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;	
+		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;
+		$_SESSION['shopping_cart_count'] = count($data['shoppingcart_all']);
 		$this->load->view('template', $data);
 	}
 	else
@@ -176,7 +177,7 @@ class Products extends MY_Controller {
 		$data['title'] = '';
 		$data['main_content'] = 'products/step4.php';		
 		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;
-		pr($data);	
+		$_SESSION['shopping_cart_count'] = count($data['shoppingcart_all']);
 		$this->load->view('template', $data);
 		
 		//redirect('/products/thankyou/');	

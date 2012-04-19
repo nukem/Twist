@@ -41,7 +41,7 @@
 			</div>
 
 			<div class="shopping-cart-info">
-				<a href="/products/checkout" class="cart-icon-link"><i class="shopping-cart-icon"></i><span>4</span></a>
+				<a href="/products/checkout" class="cart-icon-link"><i class="shopping-cart-icon"></i><span><?php echo (isset($_SESSION['shopping_cart_count']))?$_SESSION['shopping_cart_count']:'&nbsp;';?></span></a>
 			</div>
 			
 		</div>
