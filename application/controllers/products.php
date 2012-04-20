@@ -10,22 +10,28 @@ if (!defined('BASEPATH'))
  */
 class Products extends MY_Controller {
 
-  function Products() {
-    parent::__construct();
-    session_start(); 
-	$this->load->model('base_model');
-  }
+	function __construct() {
+	    parent::__construct();
+	    session_start(); 
+		$this->load->model('base_model');
+	}
+  
+	function index()
+	{
+		
+	}  
 
-  public function index() {
-	$this->form_validation->set_rules('model', 'Model', 'trim');
-	$this->form_validation->set_rules('size', 'Size', 'trim');
-	$this->form_validation->set_rules('category', 'Category', 'trim');
-	$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+	public function cover_fabric() 
+	{
+		$this->form_validation->set_rules('model', 'Model', 'trim');
+		$this->form_validation->set_rules('size', 'Size', 'trim');
+		$this->form_validation->set_rules('category', 'Category', 'trim');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 	
 	if ($this->form_validation->run() == FALSE)
 	{
 		$data['title'] = '';
-		$data['main_content'] = 'products/index.php';
+		$data['main_content'] = 'products/cover_fabric';
 		$data['sizes'] = $this->base_model->wp_item('size',array(),'*', false);
 		$data['categories'] = $this->base_model->wp_item('category',array(),'*', false);
 		$data['models'] = $this->base_model->wp_item('model',array(),'*', false);
