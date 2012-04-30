@@ -29,39 +29,114 @@
 .error {
 	border: 1px solid red;
 }
+.previous:visited {
+	color: #222;
+}
+.previous {
+	background: url(/img/buttons-bg2b.gif);
+}
+.previous:hover {
+	text-decoration:none;
+}
+.next {
+	background: url(/img/buttons-bg2.gif);
+}
+.previous,
+.next {
+	border: none;
+	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: #222;
+	display: block;
+	font: bold 14px 'Droid Sans', Arial, Helvetica, sans-serif;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	width: 146px;
+	height: 27px;	
+}
+.next {
+	float: right;
+}
+.step-container {
+	width: 890px;
+	overflow: hidden;
+	margin: 0 0 13px 0;
+}
+.previous span,
+.next span {
+	font-size: 17px;
+}
 
+.options	{
+	background: url(/img/buttons-bg.gif) no-repeat;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	display: inline-block;
+	font: bold 13px 'Droid Sans', Arial, Helvetica, sans-serif;
+	line-height: 30px;
+	margin-left: 4px;
+	text-decoration: none;
+	vertical-align: middle;
+	width: 144px;
+	height: 30px;
+	text-align: center;
+	margin-top: 6px;
+}
+.lt-ie8 .options	{ display: inline; margin-top: 6px; }
+.options:link,
+.options:visited	{ color: #222; }
+.options:hover	{ text-decoration: underline; }
+
+#options-bar	{
+	background-color: #D2D2D2;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px; line-height: 40px;
+	margin-top: 10px;
+	width: 475px;
+	height: 43px;	
+}
+#steps	{
+	position: relative;
+}
+#steps span	{
+	color: #CECECE;
+	display: block;
+	font: bold 14px 'Droid Sans', Arial, Helvetica, sans-serif;
+	height: 18px;
+	position: absolute;
+	overflow: hidden;
+	top: 43px;
+	text-align: center;
+	width: 157px;
+}
+#steps .step-active	{ color: #222; }
+#steps #step1	{ left: 135px; }
+#steps #step2	{ left: 310px; }
+#steps #step3	{ left: 480px; }
+#steps #step4	{ left: 660px; }
 </style>
 <form action="" method="post" class="uniform">
 <div class="box-container">
 	<div class="box-content">
 		<div class="products" >
-			<div class="steps">
-				<ul>
-					<li class="step-1 ">
-						<span class="steps-num">Step 1</span>
-						<span class="title">Cover Fabric</span>								
-					</li>
-					<li class="step-2">
-						<span class="steps-num">Step 2</span>
-						<span class="title">Nail Heads/Fittings </span>		
-													
-					</li>
-					<li class="step-3">
-						<span class="steps-num">Step 3</span>
-						<span class="title">Legs/Wood Finish </span>	
-													
-					</li>
-					<li class="step-4 active">
-						<span class="steps-num">Step 4</span>
-						<span class="title">Checkout </span>		
-						<span class="arrow"><img src="<?= base_url() ?>images/buttons/arrow.png" alt="arrow" width="25" height="14" /></span>								
-					</li>
-				</ul>
-				<div class="clear"></div>
+			<div class="steps" id="steps">
+				<img src="/img/step-4.gif" />
+				<span id="step1">Cover Fabric</span>
+	            <span id="step2">Nail Heads/Fittings</span>
+	            <span id="step3">Legs/Wood Finish</span>
+	            <span id="step4" class="step-active">Checkout</span>
+			<div class="clear"></div>
 			</div>
-			<div class="steps-btn">
-				<span class="prev"><a href="<?=base_url()?>products/wood_fittings">&lt;&lt; Previous Step</a></span>
-				<span ><input type="submit" value="Next Step &gt;&gt;" name="next-btn" id="next-btn" class="next" /></span>
+			<div class="step-container">
+				<button class="next">Next Step <span>»</span></button>
+				<a href="<?=base_url()?>products/wood_fittings" class="previous"><span>«</span> Previous Step</a>
+
+				
 			</div>
 			<div class="left-panel" style="width:0px;background:white">
 				
@@ -188,8 +263,8 @@
 					<span><big id="cart_total">$<?php echo  number_format($total+100+$tax, 2, '.', ' ') ?></big></span>
 				</div>
 				<div class="clear"></div><br/><br/>
-				<div class="steps-btn" style="width:800px;">
-					<span class="next"><a href="#">Checkout</a></span>
+				<div id="options-bar" style="text-align:right;width:840px;padding-right:12px;">
+					<a href="#" class="options">Checkout</a>
 				</div>		
 			</div>
 			<div class="clear"></div>

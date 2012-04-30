@@ -25,7 +25,7 @@ class Products extends MY_Controller {
 	if ($this->form_validation->run() == FALSE)
 	{
 		$data['title'] = '';
-		$data['main_content'] = 'products/index.php';
+		$data['main_content'] = 'productlist/index.php';
 		$data['sizes'] = $this->base_model->wp_item('size',array(),'*', false);
 		$data['categories'] = $this->base_model->wp_item('category',array(),'*', false);
 		$data['models'] = $this->base_model->wp_item('model',array(),'*', false);
@@ -57,7 +57,7 @@ class Products extends MY_Controller {
 			$_SESSION['shoppingcart']=$form_data ;
 		}
 		
-		redirect('/products/nail_fittings/');
+		redirect('/productlist/');
 	}
 	
   }
@@ -71,7 +71,7 @@ class Products extends MY_Controller {
 	if ($this->form_validation->run() == FALSE)
 	{
 		$data['title'] = '';
-		$data['main_content'] = 'products/step2.php';
+		$data['main_content'] = 'productlist/index.php';
 		$data['sizes'] = $this->base_model->wp_item('size',array(),'*', false);
 		$data['categories'] = $this->base_model->wp_item('category',array(),'*', false);
 		$data['models'] = $this->base_model->wp_item('model',array(),'*', false);
@@ -96,7 +96,7 @@ class Products extends MY_Controller {
 		// this sets variables in the session 
 		$_SESSION['shoppingcart']=$form_data ;
 		
-		redirect('/products/wood_fittings/');
+		redirect('/productlist/');
 	}
 	
   }
@@ -111,7 +111,7 @@ class Products extends MY_Controller {
 	if ($this->form_validation->run() == FALSE)
 	{	
 		$data['title'] = '';
-		$data['main_content'] = 'products/step3.php';
+		$data['main_content'] = 'productlist/index.php';
 		$data['sizes'] = $this->base_model->wp_item('size',array(),'*', false);
 		$data['categories'] = $this->base_model->wp_item('category',array(),'*', false);
 		$data['models'] = $this->base_model->wp_item('model',array(),'*', false);
@@ -135,7 +135,8 @@ class Products extends MY_Controller {
 		// this sets variables in the session 
 		$_SESSION['shoppingcart']=$form_data ;
 		
-		redirect('/products/checkout/');	}
+		redirect('/productlist/');
+		}
   }
   
   
@@ -166,7 +167,7 @@ class Products extends MY_Controller {
 		}
 		
 		$data['title'] = '';
-		$data['main_content'] = 'products/step4.php';		
+		$data['main_content'] = 'productlist/index.php';
 		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;
 		$_SESSION['shopping_cart_count'] = count($data['shoppingcart_all']);	
 		$this->load->view('template', $data);
@@ -174,7 +175,7 @@ class Products extends MY_Controller {
 	else
 	{
 		$data['title'] = '';
-		$data['main_content'] = 'products/step4.php';		
+		$data['main_content'] = 'productlist/index.php';
 		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();//isset($_SESSION['shoppingcart']) ? $_SESSION['shoppingcart']: null;
 		$_SESSION['shopping_cart_count'] = count($data['shoppingcart_all']);	
 		$this->load->view('template', $data);

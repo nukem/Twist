@@ -10,9 +10,7 @@
 <meta name="keywords" content="ProjectName" />
 <title>Twist Lifestyle</title>
 <link href="<?= base_url() ?>css/reset.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="<?= base_url() ?>css/style-update.css?t=<?php echo time();?>" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/style.css?t=<?php echo time();?>" rel="stylesheet" type="text/css" media="screen" />
-
 <link href="<?= base_url() ?>css/sliderkit-core.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/font/stylesheet.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/jquery-ui-1.8.18.custom.css" type="text/css" rel="stylesheet" media="screen" />
