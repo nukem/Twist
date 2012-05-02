@@ -33,7 +33,8 @@ $club = json_encode($_POST['club']);
    editRights = '$editRights',
    deleteRights = '$deleteRights',
    description = '" . addslashes (preg_replace('/src="..\//', 'src="', $_POST['description'])) . "',
-   category = '{$_POST['category']}'
+   category = '{$_POST['category']}',
+   price = {$_POST['price']}
   WHERE
    link = id AND
    id = $id");

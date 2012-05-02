@@ -1,4 +1,4 @@
-<?
+<?php
 	$error = "";
 	$msg = "";
 	$insert_id = $image_title = $filetype_extension = "";

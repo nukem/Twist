@@ -43,7 +43,19 @@ class Base_model extends CI_Model {
 		$this->db->from('shop_order_items');
 
 		$query = $this->db->get();
-		$data = $query->result_array($query);
+		$data = $query->result_array();
+		foreach($data as $key => $value)
+		{
+			//Model details
+			$result = $this->wp_item('model', array('wp_structure.title' => $value['model']), '*', TRUE);
+			$data[$key]['Model'] = $result;
+			//Fabric details
+			$result = $this->wp_item('fabric', array('wp_fabric.link' => $value['fabric']), '*', TRUE);
+			$data[$key]['Fabric'] = $result;
+			//Leather details
+			//Nail details
+			//Leg details
+		}
 
 		return $data;
 	}

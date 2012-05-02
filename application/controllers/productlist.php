@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
  * 
  * @author     Michael Cortes
  */
-class Products extends MY_Controller {
+class xxProducts extends MY_Controller {
 
   function Products() {
     parent::__construct();

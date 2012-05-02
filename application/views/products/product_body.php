@@ -21,10 +21,30 @@
 #steps #step2	{ left: 310px; }
 #steps #step3	{ left: 480px; }
 #steps #step4	{ left: 660px; }
+
+.listing div.banner {
+	border: 3px solid #f2f2f2;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;	
+}
+div.selected-option { 
+	border: 3px solid #ff6600 !important;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+div.listing ul li span.product-name {
+	text-align: center !important;
+	display: block;
+	float: none;
+}
 </style>
 <? 
 		$current_product_step = trim(str_replace("/products/", "", $_SERVER['REQUEST_URI'])); 
 		$varbaseurl = "http://www.twistlifestyle.com";
+		$varbaseurl = base_url();
+		/**
 		if ($current_product_step == "" or $current_product_step == "/products"):
 			$varprodstep = 1; $current_product_step = "";
 			$varstep1active = "class='step-active'"; $varstep2active = ""; $varstep3active = "";
@@ -38,6 +58,31 @@
 			$varstep1active = ""; $varstep2active = ""; $varstep3active = "class='step-active'";
 			$varprevlink = "<span class='prev'><a href='$varbaseurl/products/nail_fittings'>&lt;&lt; Previous Step</a></span>";
 		endif;
+		**/ 
+		switch($current_product_step)
+		{
+			case 'nail_fittings':
+				$varprodstep = 2;
+				$varstep1active = ""; 
+				$varstep2active = "class='step-active'";
+				$varstep3active = "";
+				$varprevlink = "<span class='prev'><a href='{$varbaseurl}products/'>&lt;&lt; Previous Step</a></span>";
+				break;
+			case 'wood_fittings':
+				$varprodstep = 3;
+				$varstep1active = ""; 
+				$varstep2active = ""; 
+				$varstep3active = "class='step-active'";
+				$varprevlink = "<span class='prev'><a href='{$varbaseurl}products/nail_fittings'>&lt;&lt; Previous Step</a></span>";
+				break;
+			default:
+				$varprodstep = 1; 
+				$current_product_step = "";
+				$varstep1active = "class='step-active'";
+				$varstep2active = ""; 
+				$varstep3active = "";
+				$varprevlink = "<span class='prev'><a href='#'>&lt;&lt; Previous Step</a></span>";	
+		}
 		echo "
 		<div class='steps' id='steps'>
 			<img src='/img/step-$varprodstep.gif' />
@@ -75,16 +120,32 @@
 									<span>
 									<br>Please select your fabric be clicking on your desired swatch panel below:
 									</span>
-								<div class="listing">									
+								<div class="listing">
+								<input type="hidden" name="fabric" value="<?php echo $fabric;?>" id="product-fabric"/>									
 									<ul>
-										<?php 
+										<?php
+										$selection_option = '';
 										foreach($fabrics as $f) {
+											if($fabric == $f['type_id'])
+											{
+												$selection_option = ' selected-option';	
+											}
 										?>
 											<li>
-												<div class="banner"><a href="#"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
+												<div class="banner<?php echo $selection_option;?>" style="height:146px;overflow:hidden;text-align:center;">
+												<a href="#product-fabric" class="product-option" rel="<?php echo $f['type_id'];?>">
+													<img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="73" />
+													<?php if(!empty($f['images'][1]['id'])) {?>
+														<img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][1]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="73" />
+													<?php } else { ?>
+														<img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="73" />
+													<?php }?>
+												</a>
+												</div>
 												<span class="product-name"><a href="#"><?php echo $f['title'] ?></a></span>
 											</li>											
 										<?php
+											$selection_option = '';
 										}
 										?>										
 									</ul>
@@ -99,15 +160,24 @@
 								<br>Please select your leather be clicking on your desired swatch panel below:
 								</span>
 								<div class="listing">
+								<input type="hidden" name="leather" value="<?php echo $leather;?>" id="product-leather" />
 									<ul>
-										<?php 
+										<?php
+										$selection_option = '';
 										foreach($leathers as $f) {
+											if($leather == $f['type_id'])
+											{
+												$selection_option = ' selected-option';	
+											}
 										?>
 										<li>
-											<div class="banner"><a href="#"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
-											<span class="product-name"><a href="#"><?php echo $f['title'] ?></a></span>
+											<a href="#product-leather" class="product-option" rel="<?php echo $f['type_id'];?>">
+												<div class="banner<?php echo $selection_option;?>" style="text-align:center;"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
+												<span class="product-name"><?php echo $f['title'] ?></span>
+											</a>
 										</li>									
 										<?php
+											$selection_option = '';
 										}
 										?>				
 										
@@ -125,15 +195,24 @@
 								<br>Please select your nail preference be clicking on your desired swatch panel below:
 								</span>
 								<div class="listing">
+								<input type="hidden" name="nail" value="<?php echo $nail;?>" id="product-nail" />
 									<ul>
-										<?php 
+										<?php
+										$selection_option = '';
 										foreach($nails as $f) {
+											if($nail == $f['type_id'])
+											{
+												$selection_option = ' selected-option';	
+											}
 										?>
 											<li>
-												<div class="banner"><a href="#"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
-												<span class="product-name"><a href="#"><?php echo $f['title'] ?></a></span>
+												<a href="#product-nail" class="product-option" rel="<?php echo $f['type_id'];?>">
+													<div class="banner<?php echo $selection_option;?>" style="text-align:center;"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
+													<span class="product-name"><?php echo $f['title'] ?></span>
+												</a>
 											</li>											
 										<?php
+											$selection_option = '';
 										}
 										?>														
 									</ul>
@@ -150,15 +229,24 @@
 									<br>Please select your wood finish:
 									</span>
 								<div class="listing">
+								<input type="hidden" name="leg" value="<?php echo $leg;?>" id="product-leg"/>
 									<ul>
-										<?php 
+										<?php
+										$selection_option = '';
 										foreach($legs as $f) {
+											if($leg == $f['type_id'])
+											{
+												$selection_option = ' selected-option';	
+											}
 										?>
 											<li>
-												<div class="banner"><a href="#"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
-												<span class="product-name"><a href="#"><?php echo $f['title'] ?></a></span>
+												<a href="#product-leg" class="product-option" rel="<?php echo $f['type_id'];?>">
+													<div class="banner<?php echo $selection_option;?>" style="text-align:center;"><img src="<?= base_url() ?>wpdata/images/<?php echo (count($f['images']) > 0 ? $f['images'][0]['id']."-l.jpg" : "") ?>" alt="banner" width="88" height="87" /></a></div>
+													<span class="product-name"><?php echo $f['title'] ?></span>
+												</a>
 											</li>											
 										<?php
+											$selection_option = '';
 										}
 										?>				
 									</ul>
@@ -175,10 +263,10 @@
 										<div class="select-fields">
 											<select id="category" name="category">				
 												<option value="">Select Category</option>
-												<?php 
+												<?php
 												foreach($categories as $s) {
 												?>
-													<option value="<?php echo $s['title'] ?>"><?php echo $s['title'] ?></option>
+													<option value="<?php echo $s['title'] ?>" <?php if($category == $s['title']) echo 'selected="selected"';?>><?php echo $s['title'] ?></option>
 												<?php
 												}
 												?>
@@ -192,7 +280,7 @@
 												<?php 
 												foreach($models as $s) {
 												?>
-													<option value="<?php echo $s['title'] ?>"><?php echo $s['title'] ?></option>
+													<option value="<?php echo $s['title'] ?>" <?php if($model == $s['title']) echo 'selected="selected"';?>><?php echo $s['title'] ?></option>
 												<?php
 												}
 												?>
@@ -206,7 +294,7 @@
 												<?php 
 												foreach($sizes as $s) {
 												?>
-													<option value="<?php echo $s['title'] ?>"	><?php echo $s['title'] ?></option>
+													<option value="<?php echo $s['title'] ?>" <?php if($category==$s['title']) echo 'selected';?>><?php echo $s['title'] ?></option>
 												<?php
 												}
 												?>
@@ -231,7 +319,20 @@
 					<div  class="title" style="float:left;margin-right:20px;" id="size_label" /></div>
 				</div>
 				<br style="clear:both"/>
-				<div class="banner" style="margin-top:8px;"><img src="<?= base_url() ?>images/banners/products/details/image1.jpg" alt="banner" width="395" height="293" /></div>				
+				<div class="banner" style="margin-top:8px;">
+					<?php if(!empty($current_model_image[0]['title'])) {?>
+						<div style="overflow:hidden;width:395px;height:293px;margin:0;padding:0;">
+						<?php echo img(array(
+								'src' => 'wpdata/images/'.$current_model_image[0]['id'].'-l.jpg',
+								'width' => '100%'
+							)
+						);
+						?>
+						</div>
+					<?php } else { ?>
+						<img src="<?= base_url() ?>images/banners/products/details/image1.jpg" alt="banner" width="395" height="293" />
+					<?php }?>
+				</div>				
 				<span class="zoom-btn" style="margin-top:17px"><a href="#">Click image to zoom</a></span>
                 <div id="options-bar">
                 	<a href="" class="options">Share</a>
@@ -240,3 +341,16 @@
                 </div> <!-- End options -->
 			</div>
 			<div class="clear"></div>
+			
+<script type="text/javascript" defer="defer">
+	(function(){
+		$('.product-option').click(function(){
+			selection = $(this);
+			target = selection.attr('href');
+			value = selection.attr('rel');
+			$(target).val(value);
+			lis = selection.parent().parent().parent().find('li > div').removeClass('selected-option');
+			selection.parent().addClass('selected-option');
+		});
+	})();
+</script>

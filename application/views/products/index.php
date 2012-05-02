@@ -38,7 +38,7 @@
 			<?php include_once "product_body.php"; ?>
 		</div>
 	</div>
-	<div><img src="<?= base_url() ?>images/b-curve.png" alt="bottom curve" width="972" height="11"c /></div>
+	<div><img src="<?= base_url() ?>images/b-curve.png" alt="bottom curve" width="972" height="11" /></div>
 </div>
 </form>
 <br /><br /><br /><br />

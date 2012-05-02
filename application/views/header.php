@@ -24,7 +24,7 @@
 			<ul>
 				<li><a href="<?=base_url()?>">HOME</a></li>
 				<li><a href="<?=base_url()?>">CATALOGUE</a></li>
-				<li><a href="<?=base_url()?>products">PRODUCTS</a></li>
+				<li><a href="<?=base_url()?>products/browse">PRODUCTS</a></li>
 				<li><a href="<?=base_url()?>general_content.html">TESTIMONIALS</a></li>
 				<li><a href="<?=base_url()?>#">FABRIC</a></li>
 				<li><a href="<?=base_url()?>#">WHOLESALE</a></li>

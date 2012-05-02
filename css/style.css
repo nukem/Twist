@@ -195,7 +195,6 @@ p {
 	color:#999999;
 	line-height:18px;
 }
-
 .search input.submit-btn {
 	background:url(../images/buttons/search-btn.png) no-repeat 0 0;
 	width:10px;
@@ -677,6 +676,68 @@ ul.list-content li {
 }
 
 
+/* Steps Button1 New */
+
+.steps-btn1 {
+	width:890px;
+	overflow:hidden;
+	margin:0 0 13px 0;
+	
+}
+
+.steps-btn1 .prev {
+	background: url(../images/buttonsnew/buttons-bg2b.gif) no-repeat 0 0;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	font: bold 14px 'Droid Sans', Arial, Helvetica, sans-serif;
+	color:#000000;
+	width: 146px;
+	height: 27px;	
+	float:left;
+}
+
+.steps-btn1 .next {
+	background: url(../images/buttonsnew/buttons-bg2.gif) no-repeat 0 0;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	font: bold 14px 'Droid Sans', Arial, Helvetica, sans-serif;
+	color:#000000;
+	width: 146px;
+	height: 27px;	
+	float:right;
+}
+.steps-btn1 input {
+	background:url(../images/buttons/steps-btn.png) no-repeat 0 0;
+	width:144px;
+	height:30px;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+	color:#ffffff;
+	border:none;
+}
+
+.steps-btn1 a {
+	background: url(../images/buttonsnew/buttons-bg2b.gif) no-repeat 0 0;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+	color:#000000;
+}
+
+.steps-btn1-right a {
+	background: url(../images/buttonsnew/buttons-bg2.gif) no-repeat 0 0;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+	color:#000000;
+}
+
 /* left panel */
 
 .left-panel {
@@ -775,6 +836,12 @@ html ul.tabs li.active a {
 	padding:0 0 0 12px;
 }
 
+.fabrics span {
+	font-size:14px;
+	float:left;
+	padding:10px 0 10px 0;
+}
+
 .fabrics .select-fields {
 	width:176px;
 	float:left;
@@ -838,9 +905,10 @@ html ul.tabs li.active a {
 }
 
 .product-detail h2 {
-	text-align:center;
-		font-size:30px;
-		line-height:33px;
+		text-align:center;
+		font-size:22px;
+		color:#777777;
+		line-height:31px;
 		font-family:DroidSansBold, Arial, Helvetica, sans-serif;
 		margin:0 0 20px 0;
 }
@@ -880,6 +948,34 @@ html ul.tabs li.active a {
 }
 
 .product-detail-btns .btns a {
+	background:url(../images/buttons/steps-btn.png) no-repeat 0 0;
+	width:144px;
+	height:30px;
+	display:block;
+	text-align:center;
+	line-height:30px;
+	color:#ffffff;
+	font-size:13px;
+	font-family:DroidSansBold, Arial, Helvetica, sans-serif;
+}
+
+
+.product-detail-btns1 {
+	width:469px;
+	background:url(../images/product-detail-btn-bg.png) no-repeat 0 0;
+	height:37px;
+	padding:6px 0 0 6px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+
+.product-detail-btns1 .btns {
+	float:left;
+	margin:0 5px 0 5px;
+}
+
+.product-detail-btns1 .btns a {
 	background:url(../images/buttons/steps-btn.png) no-repeat 0 0;
 	width:144px;
 	height:30px;
@@ -1058,3 +1154,38 @@ html ul.tabs li.active a {
 	background-repeat: no-repeat;
 	margin-right: .3em;
 }	
+
+/* NEW OPTIONS BAR
+----------------------------------------------------------------------------------------*/
+
+#options-bar	{
+	background-color: #D2D2D2;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px; line-height: 40px;
+	margin-top: 10px;
+	width: 475px;
+	height: 43px;	
+	vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;}
+.options	{
+	background: url(../images/buttonsnew/buttons-bg.gif) no-repeat;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	display: inline-block;
+	font: bold 13px 'Droid Sans', Arial, Helvetica, sans-serif;
+	line-height: 30px;
+	margin-left: 4px;
+	text-decoration: none;
+	vertical-align: middle;
+	text-align: center;
+	width: 144px;
+	height: 30px;
+}
+.lt-ie8 .options	{ display: inline; margin-top: 6px; }
+.options:link,
+.options:visited	{ color: #222; }
+.options:hover	{ text-decoration: underline; }
+

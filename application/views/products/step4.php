@@ -201,10 +201,28 @@
 					?>
 					<tr >													
 							<td style="width:320px">
-								<div class="cartthumb"><img src="<?= base_url() ?>images/banners/products/details/image1.jpg" alt="Giselle King Headboard"></div>
-								<div class="cartfabric"><a><img src="<?= base_url() ?>images/banners/products/905501.jpg" alt="Lotus" /></a></div>
+								<div class="cartthumb">
+									<?php echo img('wpdata/images/'.$s['Model'][0]['images'][0]['id'].'-s.jpg');?>
+								</div>
+								<div class="cartfabric" style="overflow:hidden;padding:0;">
+									<?php 	if(!empty($s['Fabric'])):
+												if(count($s['Fabric']['0']['images']) > 1)
+												{?>
+													<div style="height:50%">
+														<?php echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');?>
+													</div>
+													<div style="height:50%;">
+														<?php echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');?>
+													</div>
+													
+									<?php  		} else {
+										 			echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+																
+												}
+										 	endif;?>
+								</div>
 								<div class="cartdesc"><br/>
-									<h5># 358533 - Manchester King Headboard</h5><br/>
+									<h5><?php echo $s['model'] . ' ' . $s['size']?> Size Bed</h5><br/>
 									
 								</div>
 							</td>

@@ -1,4 +1,24 @@
-<? require ("tpl/inc/head.php"); ?>
+<?php require ("tpl/inc/head.php"); ?>
+<style>
+.file-parent {
+	margin: 0;
+	padding: 2px 2px 0 2px;
+	border: 1px solid #CCC;
+	list-style: none;
+}
+.file-parent li {
+	border: 1px solid #CCC;
+	background: #EEE;
+	padding: 2px;
+	margin-bottom: 2px;
+}
+.file-parent li .editor {
+	display: none;
+}
+.file-parent li span {
+	padding-right: 5px;
+}
+</style>
 <body> 
 <div id="page"> 
   <? require ("tpl/inc/header.php"); ?> 
@@ -44,12 +64,22 @@
 					</select>
 				</td>
 			  </tr>
+			  
+
               <tr> 
                 <td colspan="4"> 
 				<label>Description</label><br />
 					<textarea name="description" cols="30" rows="10" class="textfield height-200 tinymce"><? if (isset ($_POST['description'])) echo htmlspecialchars ($_POST['description']); else echo htmlspecialchars (preg_replace('/src="/', 'src="../', $record['description'])); ?></textarea>
                 </td> 
-              </tr>     
+              </tr>
+              
+			  <tr>
+			  	<td colspan="2">
+			  		<label for="model-price">Base Price:</label><br />
+			  		<input type="text" name="price" id="model-price" value="<?php echo $record['price'];?>" />
+			  	</td>
+			  </tr>
+			                    
 			  <tr>
 				<td colspan="1" >
 				  <div style="border:1px solid #cecece;padding:10px;">
@@ -77,8 +107,8 @@
 					<span>$</span><input type="text" class="textfield" style="width:50%" value="" name="fabric-price-add" id="fabric-price-add" />
 					<input type="button" value="Add Fabric" onClick="addModelElement('<?= $id ?>', 'fabric');"/>
 					</div>
-					<div id="image-parent">
-						<ul id="image-sort">
+					<div id="image-parent-fabrics">
+						<ul id="image-sort-fabrics" class="file-parent">
 						<?
 						$linked_fabric = dbq("SELECT wm.*, ws.title FROM `wp_model_element` wm, `wp_fabric` wf, `wp_structure` ws WHERE ws.id = wf.link AND wm.type_id = wf.link AND wm.`parent` = '{$id}' AND wm.type = 'fabric' ORDER BY wm.`position`");
 						if (is_array($linked_fabric)) {
@@ -140,8 +170,8 @@
 					<span>$</span><input type="text" class="textfield" style="width:50%" value="" name="nail-price-add" id="nail-price-add" />
 					<input type="button" value="Add Nail head" onClick="addModelElement('<?= $id ?>', 'nail');" />
 					</div>
-					<div id="image-parent">
-						<ul id="image-sort">
+					<div id="image-parent-nail-head-accessories">
+						<ul id="image-sort-nail-head-accessories" class="file-parent">
 						<?
 						$linked_nail = dbq("SELECT wm.*, ws.title FROM `wp_model_element` wm, `wp_nail` wn, `wp_structure` ws WHERE ws.id = wn.link AND wm.type_id = wn.link AND wm.`parent` = '{$id}' AND wm.type = 'nail' ORDER BY wm.`position`");
 						if (is_array($linked_nail)) {
@@ -203,8 +233,8 @@
 					<span>$</span><input type="text" class="textfield" style="width:50%" value="<?php echo show_value('product_postage1'); ?>" name="legs-price-add" id="legs-price-add" />
 					<input type="button" value="Add Legs" onClick="addModelElement('<?= $id ?>', 'legs');"  />
 					</div>
-					<div id="image-parent">
-						<ul id="image-sort">
+					<div id="image-parent-legs-finish">
+						<ul id="image-sort-legs-finish" class="file-parent">
 						<?
 						$linked_legs = dbq("SELECT wm.*, ws.title FROM `wp_model_element` wm, `wp_legs` wl, `wp_structure` ws WHERE ws.id = wl.link AND wm.type_id = wl.link AND wm.`parent` = '{$id}' AND wm.type = 'legs' ORDER BY wm.`position`");
 						if (is_array($linked_legs)) {
@@ -266,8 +296,8 @@
 					<span>$</span><input type="text" class="textfield" style="width:50%" value="<?php echo show_value('product_postage1'); ?>" name="leather-price-add" id="leather-price-add" />
 					<input type="button" value="Add Leather" onClick="addModelElement('<?= $id ?>', 'leather');"  />
 					</div>
-					<div id="image-parent">
-						<ul id="image-sort">
+					<div id="image-parent-leather">
+						<ul id="image-sort-leather" class="file-parent">
 						<?
 						$linked_leatherr = dbq("SELECT wm.*, ws.title FROM `wp_model_element` wm, `wp_leather` wl, `wp_structure` ws WHERE ws.id = wl.link AND wm.type_id = wl.link AND wm.`parent` = '{$id}' AND wm.type = 'leather' ORDER BY wm.`position`");
 						if (is_array($linked_leatherr)) {
