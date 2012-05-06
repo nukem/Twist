@@ -65,6 +65,26 @@
 				</td>
 			  </tr>
 			  
+			  
+			  <tr>
+				<td>
+					<label>Customize Labels:</label>
+				</td>
+			  </tr>
+			  <tr>
+			  	<td>
+			  		<label>Step 1:</label><br />
+			  		<input type="text" name="step1_text" placeholder="Cover Fabric" required value="<?php echo $record['step1_text'];?>"/>
+			  	</td>
+			  	<td>
+			  		<label>Step 2:</label><br />
+			  		<input type="text" name="step2_text" placeholder="Nail Heads/Fittings" required value="<?php echo $record['step2_text'];?>"/>
+			  	</td>
+			  	<td>
+			  		<label>Step 3:</label><br />
+			  		<input type="text" name="step3_text" placeholder="Legs" required value="<?php echo $record['step3_text'];?>"/>
+			  	</td>
+			  </tr>
 
               <tr> 
                 <td colspan="4"> 
@@ -76,7 +96,7 @@
 			  <tr>
 			  	<td colspan="2">
 			  		<label for="model-price">Base Price:</label><br />
-			  		<input type="text" name="price" id="model-price" value="<?php echo $record['price'];?>" />
+			  		<input type="text" name="price" id="model-price" value="<?php echo $record['price'];?>" required placeholder="0.00"/>
 			  	</td>
 			  </tr>
 			                    

@@ -38,3 +38,9 @@
 2012-05-01 11:10:48  192.168.1.72              3 peakwebsystems        Record saved. [3892]
 2012-05-01 11:15:25  192.168.1.72              3 peakwebsystems        Record saved. [3892]
 2012-05-01 11:56:16  192.168.1.72              3 peakwebsystems        Record saved. [3892]
+2012-05-04 14:36:26  192.168.1.72              3 peakwebsystems        User signed in.
+2012-05-04 15:00:16  192.168.1.72              3 peakwebsystems        Record saved. [3891]
+2012-05-04 15:01:48  192.168.1.72              3 peakwebsystems        Record saved. [3889]
+2012-05-04 15:02:00  192.168.1.72              3 peakwebsystems        Record saved. [3892]
+2012-05-04 15:02:51  192.168.1.72              3 peakwebsystems        Record saved. [3889]
+2012-05-04 15:36:50  192.168.1.72              3 peakwebsystems        Record saved. [3889]

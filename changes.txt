@@ -1,0 +1,6 @@
+5/4/2012
+
+ALTER TABLE `twistlifestyle`.`wp_model`   
+  ADD COLUMN `step1_text` VARCHAR(120) NULL AFTER `price`,
+  ADD COLUMN `step2_text` VARCHAR(120) NULL AFTER `step1_text`,
+  ADD COLUMN `step3_text` VARCHAR(120) NULL AFTER `step2_text`;

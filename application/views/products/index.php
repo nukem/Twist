@@ -30,7 +30,6 @@
 #prev1 span,
 #next1 span	{ font-size: 17px; }
 </style>
-<?php //print_r($shoppingcart) ?>
 <form action="" method="post" class="uniform">
 <div class="box-container">
 	<div class="box-content">

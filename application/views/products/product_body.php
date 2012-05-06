@@ -83,23 +83,28 @@ div.listing ul li span.product-name {
 				$varstep3active = "";
 				$varprevlink = "<span class='prev'><a href='#'>&lt;&lt; Previous Step</a></span>";	
 		}
-		echo "
+		?>
 		<div class='steps' id='steps'>
-			<img src='/img/step-$varprodstep.gif' />
-			<span id='step1' $varstep1active>Cover Fabric</span>
-			<span id='step2' $varstep2active>Nail Heads/Fittings</span>
-			<span id='step3' $varstep3active>Legs/Wood Finish</span>
+			<img src='/img/step-<?php echo $varprodstep;?>.gif' />
+			<span id='step1' <?php echo $varstep1active;?>>
+				<?php echo (!empty($current_model['step1_text']))?$current_model['step1_text']:'Cover Fabric';?>
+			</span>
+			<span id='step2' <?php echo $varstep2active;?>>
+				<?php echo (!empty($current_model['step1_text']))?$current_model['step2_text']:'Nail Heads/Fittings';?>
+			</span>
+			<span id='step3' <?php echo $varstep3active;?>>
+				<?php echo (!empty($current_model['step1_text']))?$current_model['step3_text']:'Legs/Wood Finish';?>
+			</span>
 			<span id='step4'>Checkout</span>
 			<div class='clear'></div>
 		</div>
 		<div class='steps-btn1'>
-				$varprevlink
+				<?php echo $varprevlink;?>
 				<span>
 				<input type='submit' value='Next Step &gt;&gt;' name='next-btn1' id='next-btn1' class='next' />
 				</span>
 			</div>
-		";
-		?>			
+		
 			<div class="left-panel">
 				<ul class="tabs">
 					<? if ($current_product_step == ""): ?>

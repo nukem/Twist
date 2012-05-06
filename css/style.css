@@ -1153,6 +1153,7 @@ html ul.tabs li.active a {
 	background-position: -360px -120px;
 	background-repeat: no-repeat;
 	margin-right: .3em;
+	background-size: 110% 110%;
 }	
 
 /* NEW OPTIONS BAR

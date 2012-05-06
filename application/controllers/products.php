@@ -61,10 +61,12 @@ class Products extends MY_Controller {
 	$this->form_validation->set_rules('size', 'Size', 'trim');
 	$this->form_validation->set_rules('category', 'Category', 'trim');
 	$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+	
 
 	$customize = $this->input->post('customize');
 	if($customize !== FALSE)
 	{
+		$_SESSION['shoppingcart'] = NULL;
 		$data['model'] = $this->input->post('model');
 		$data['size'] = $this->input->post('size');
 		$data['category'] = $this->input->post('category');
@@ -213,6 +215,7 @@ class Products extends MY_Controller {
 		
 	} else {
 		$form_data = array(
+			'id' => $_SESSION['shoppingcart']['id'],
 			'category' => set_value('category'),
 			'model' => set_value('model'),
 			'size' => set_value('size'),
@@ -220,7 +223,7 @@ class Products extends MY_Controller {
 			'leather' => $_SESSION['shoppingcart']['leather'],
 			'nail' => $this->input->post('nail'),
 		);
-	
+		$this->base_model->cartitem_save($form_data);
 		// this sets variables in the session 
 		$_SESSION['shoppingcart'] = $form_data ;
 		
@@ -275,6 +278,7 @@ class Products extends MY_Controller {
 	else
 	{
 		$form_data = array(
+			'id' => isset($_SESSION['shoppingcart']['id'])?$_SESSION['shoppingcart']['id']:'0',
 			'category' => set_value('category'),
 			'model' => set_value('model'),
 			'size' => set_value('size'),
@@ -284,7 +288,7 @@ class Products extends MY_Controller {
 			'leg' => $this->input->post('leg'),
 		
 		);
-	
+		$this->base_model->cartitem_save($form_data);
 		// this sets variables in the session 
 		$_SESSION['shoppingcart']=$form_data ;
 		

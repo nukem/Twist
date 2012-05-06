@@ -119,8 +119,37 @@
 #steps #step2	{ left: 310px; }
 #steps #step3	{ left: 480px; }
 #steps #step4	{ left: 660px; }
+
+.product-options-container {
+	float: right;
+}
+.product-options-container > ul {
+	float: left;
+}
+.product-options-container > ul li:first {
+	display: block;
+}
+.product-options-container > ul > li {
+	display: inline-block;
+	margin-top: 4px;
+	width: 47px;
+}
+.product-options-container > ul > li > span{
+	overflow:hidden;
+	height: 47px;
+	width: 47px;
+}
+.product-options-container > ul > li span img {
+	width: 100%;
+}
+.product-options-container > ul > li p {
+	font-size: 10px;
+	text-align: center;
+	font-family: verdana, sans-serif;
+	margin:0;
+	line-height: 1.1em;
+}
 </style>
-<form action="" method="post" class="uniform">
 <div class="box-container">
 	<div class="box-content">
 		<div class="products" >
@@ -133,8 +162,8 @@
 			<div class="clear"></div>
 			</div>
 			<div class="step-container">
-				<button class="next">Next Step <span>Â»</span></button>
-				<a href="<?=base_url()?>products/wood_fittings" class="previous"><span>Â«</span> Previous Step</a>
+				<button class="next">Next Step <span>»</span></button>
+				<a href="<?=base_url()?>products/wood_fittings" class="previous"><span>«</span> Previous Step</a>
 
 				
 			</div>
@@ -143,6 +172,7 @@
 			</div>
 			<div class="product-detail1" style="float:left;width:850px;">										
 				<table class="shoppingcart" cellspacing="0" cellpadding="0" border="0" style="border:0px solid black">
+				<form action="" method="post" class="uniform">
 				<thead>
 					<thead>
 					<tr>
@@ -204,22 +234,45 @@
 								<div class="cartthumb">
 									<?php echo img('wpdata/images/'.$s['Model'][0]['images'][0]['id'].'-s.jpg');?>
 								</div>
-								<div class="cartfabric" style="overflow:hidden;padding:0;">
-									<?php 	if(!empty($s['Fabric'])):
-												if(count($s['Fabric']['0']['images']) > 1)
-												{?>
-													<div style="height:50%">
-														<?php echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');?>
-													</div>
-													<div style="height:50%;">
-														<?php echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');?>
-													</div>
-													
-									<?php  		} else {
-										 			echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
-																
-												}
-										 	endif;?>
+								<div class="option-container">
+									<div class="product-options-container">
+										<ul>
+											<li style="display:block; width: 90px; height:90px; ">
+												<div class="cartfabric" style="overflow:hidden;padding:0;">
+											<?php 	if(!empty($s['Fabric'])):
+														$vartag = "Fabric";
+														if(count($s['Fabric']['0']['images']) > 1):
+															echo "<div style='height:50%'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
+															echo "<div style='height:50%;'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');
+															echo "</div>";
+														else:
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+														endif;
+													elseif(!empty($s['Leather'])):
+														echo img('wpdata/images/'.$s['Leather'][0]['images'][0]['id'].'-s.jpg');
+														$vartag = "Leather";
+												 	endif;
+												echo "</div>";
+												echo "<p>$vartag</p>";
+											?>
+											</li>
+											<li>
+												<span>
+												<?php echo img('wpdata/images/'.$s['Nail'][0]['images'][0]['id'].'-s.jpg');?>
+												</span>
+												<p>Nails</p>
+											</li>
+											<li>
+												<span>
+												<?php echo img('wpdata/images/'.$s['Legs'][0]['images'][0]['id'].'-s.jpg');?>
+												</span>
+												<p>Legs</p>
+											</li>
+										</ul>
+									</div>
 								</div>
 								<div class="cartdesc"><br/>
 									<h5><?php echo $s['model'] . ' ' . $s['size']?> Size Bed</h5><br/>
@@ -280,19 +333,24 @@
 					<label><big>Grand&nbsp;Total:</big></label>
 					<span><big id="cart_total">$<?php echo  number_format($total+100+$tax, 2, '.', ' ') ?></big></span>
 				</div>
-				<div class="clear"></div><br/><br/>
-				<div id="options-bar" style="text-align:right;width:840px;padding-right:12px;">
-					<a href="#" class="options">Checkout</a>
+				</form>
+				<div class="clear"></div><br/>
+				<div id="options-bar" style="text-align:right;width:840px;height:55px;padding-right:12px;">
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="amount" value="<?php echo  number_format($total+100+$tax, 2, '.', ' ') ?>">
+					<input type="hidden" name="hosted_button_id" value="WKMSRW4YCZSVE">
+					<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
+					</form>
 				</div>		
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="clear" style="height:10px;"></div>
-	</div>
-	
+	</div>	
 	<div><img src="<?= base_url() ?>images/b-curve.png" alt="bottom curve" width="972" height="11"c /></div>
 </div>
-</form>
 <br /><br /><br /><br />
 
 <script type="text/javascript" defer="defer">

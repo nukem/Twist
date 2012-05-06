@@ -53,8 +53,16 @@ class Base_model extends CI_Model {
 			$result = $this->wp_item('fabric', array('wp_fabric.link' => $value['fabric']), '*', TRUE);
 			$data[$key]['Fabric'] = $result;
 			//Leather details
+			$result = $this->wp_item('leather', array('wp_leather.link' => $value['leather']),'*', TRUE);
+			$data[$key]['Leather'] = $result;
 			//Nail details
+			$result = $this->wp_item('nail', array('wp_nail.link' => $value['nail']),'*', TRUE);
+			$data[$key]['Nail'] = $result;
+			
 			//Leg details
+			$result = $this->wp_item('legs', array('wp_legs.link' => $value['leg']),'*', TRUE);
+			$data[$key]['Legs'] = $result;
+			
 		}
 
 		return $data;
