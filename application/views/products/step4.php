@@ -162,8 +162,8 @@
 			<div class="clear"></div>
 			</div>
 			<div class="step-container">
-				<button class="next">Next Step <span>»</span></button>
-				<a href="<?=base_url()?>products/wood_fittings" class="previous"><span>«</span> Previous Step</a>
+				<button class="next">Next Step <span>Â»</span></button>
+				<a href="<?=base_url()?>products/wood_fittings" class="previous"><span>Â«</span> Previous Step</a>
 
 				
 			</div>
@@ -335,12 +335,12 @@
 				</div>
 				</form>
 				<div class="clear"></div><br/>
-				<div id="options-bar" style="text-align:right;width:840px;height:55px;padding-right:12px;">
+				<div id="options-bar" style="text-align:right;width:840px;height:55px;padding-right:12px;padding-top:8px;padding-bottom:0px;">
 					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="amount" value="<?php echo  number_format($total+100+$tax, 2, '.', ' ') ?>">
 					<input type="hidden" name="hosted_button_id" value="WKMSRW4YCZSVE">
-					<input type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+					<input style="margin-top:4px;" type="image" src="https://www.paypalobjects.com/en_AU/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal ï¿½ The safer, easier way to pay online.">
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1">
 					</form>
 				</div>		
