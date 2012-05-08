@@ -19,6 +19,29 @@ class Products extends MY_Controller {
 		$this->load->helper('html');
 	}
   
+  
+	public function billing_shipping_info()
+	{
+		if($_POST)// && $this->form_validation->run('billing_shipping_edit'))
+		{
+			redirect('products/order_review');
+		}
+		
+		$data['main_content'] = 'products/billing_shipping_info';
+		$this->load->view('template', $data);
+	}
+	
+	public function order_review()
+	{
+		if($_POST && $this->form_validation->run('billing_shipping_edit'))
+		{
+			redirect('products/order_review');
+		}
+		
+		$data['main_content'] = 'products/order_review';
+		$this->load->view('template', $data);
+	}
+  
 	public function customize()
 	{
 		$data = array();
