@@ -5,7 +5,9 @@ error_reporting(E_ALL);
 $cfg['website_url'] = 'http://'.$_SERVER['HTTP_HOST'].'/';
 $cfg['db']['address'] = "localhost";
 $cfg['db']['username'] = "twlifestyle_user";
+
 $cfg['db']['password'] = "qwerty123#";
+
 $cfg['db']['name'] = "twistlifestyle";
 $cfg['db']['prefix']   = "wp";
 

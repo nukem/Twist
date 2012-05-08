@@ -10,13 +10,14 @@ if (!defined('BASEPATH'))
  */
 class Products extends MY_Controller {
 
-  function Products() {
-    parent::__construct();
-    session_start(); 
-	$this->load->model('base_model');
-	$this->load->model('Model_model');
-	$this->load->helper('html');
-  }
+	function __construct()
+	{
+		parent::__construct();
+		session_start(); 
+		$this->load->model('base_model');
+		$this->load->model('Model_model');
+		$this->load->helper('html');
+	}
   
 	public function customize()
 	{
