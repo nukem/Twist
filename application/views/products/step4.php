@@ -132,7 +132,7 @@
 .product-options-container > ul > li {
 	display: inline-block;
 	margin-top: 4px;
-	width: 47px;
+	width: 72px;
 }
 .product-options-container > ul > li > span{
 	overflow:hidden;
@@ -148,6 +148,77 @@
 	font-family: verdana, sans-serif;
 	margin:0;
 	line-height: 1.1em;
+}
+
+.dropdown-selector-container {
+	background-color: white;
+	border: 1px solid #CCC;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;	
+	position: relative;
+	padding: 4px 15px 4px 4px;
+	background-color: #EFEFEF;
+}
+.dropdown-selector-container > p {
+	padding: 0;
+	line-height: 1.3em;
+	margin: 0;
+}
+.dropdown-toggle {
+	position: absolute;
+	top: 32%;
+	right: 2px;
+	width: 12px;
+
+}
+.dropdown {
+	z-index: 5;
+	position: absolute;
+	width: 200px;
+	border: 1px solid #333;
+	display: none;
+	padding: 4px;
+	background-color: #FFF;
+list-style: none;
+background-color: white;
+border: 1px solid #CCC;
+border: 1px solid rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+-webkit-background-clip: padding-box;
+-moz-background-clip: padding;
+background-clip: padding-box;
+	top: 110%;
+}
+.dropdown > li {
+	display: inline-block;
+	width: 60px;
+	height: 86px;
+	
+	padding: 0;
+	margin: 0px 4px 6px 0px;
+	vertical-align: top;
+}
+.dropdown > li > p {
+	margin: 0;
+	padding:0;
+	line-height: 1em;
+}
+.dropdown > li > a {
+	border: 1px solid #EEE;
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+.dropdown > li img{
+	height: 100%;
+	width: 100%;
 }
 </style>
 <div class="box-container">
@@ -237,8 +308,9 @@
 								<div class="option-container">
 									<div class="product-options-container">
 										<ul>
-											<li style="display:block; width: 90px; height:90px; ">
-												<div class="cartfabric" style="overflow:hidden;padding:0;">
+											<li style="display:block; width: 98px; height:90px; ">
+												<div class="dropdown-selector-container">
+												<div class="cartfabric" style="overflow:hidden;padding:0;" id="cover-image-<?php echo $s['id'];?>" >
 											<?php 	if(!empty($s['Fabric'])):
 														$vartag = "Fabric";
 														if(count($s['Fabric']['0']['images']) > 1):
@@ -249,7 +321,12 @@
 															echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');
 															echo "</div>";
 														else:
+															echo "<div style='height:50%'>";
 															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
+															echo "<div style='height:50%;'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
 														endif;
 													elseif(!empty($s['Leather'])):
 														echo img('wpdata/images/'.$s['Leather'][0]['images'][0]['id'].'-s.jpg');
@@ -258,18 +335,93 @@
 												echo "</div>";
 												echo "<p>$vartag</p>";
 											?>
+												<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+												<ul class="dropdown" style="display:none;">
+												<?php foreach($s['Fabrics_related'] as $fabric):?>
+														<li>
+															<a href="#cover-image-<?php echo $s['id'];?>" class="product-option-selector" rel="fabric" id="<?php echo $fabric['type_id'];?>"  itemid="<?php echo $s['id'];?>">
+															<div style="overflow:hidden;padding:0;height:70px;" >
+															<?php 
+																if(!empty($fabric['images'][1]['id'])) 
+																{
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][1]['id'].'-s.jpg');
+																	echo "</div>";
+																} else {
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																}
+															?>
+															</div>
+															</a>
+															<p><?php echo $fabric['title'];?></p>
+														</li>
+												<?php endforeach;?>
+													</ul>
+												</div>
 											</li>
 											<li>
-												<span>
-												<?php echo img('wpdata/images/'.$s['Nail'][0]['images'][0]['id'].'-s.jpg');?>
-												</span>
-												<p>Nails</p>
+												<div class="dropdown-selector-container">
+													<span>
+													<?php 
+														echo img(array(
+																		'src' => 'wpdata/images/'.$s['Nail'][0]['images'][0]['id'].'-s.jpg',
+																		'id' => 'nail-image-'.$s['id']
+																	)
+																);
+													?>
+													</span>
+													<p>Nails</p>
+													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+													<ul class="dropdown" style="display:none;">
+														<?php foreach($s['Nails_related'] as $nail):?>
+														<li>
+															<div style="height:60px; width:60px;">
+															<a href="#nail-image-<?php echo $s['id'];?>" class="product-option-selector" rel="nail" id="<?php echo $nail['type_id'];?>" itemid="<?php echo $s['id'];?>">
+															<?php echo img('wpdata/images/'.$nail['images'][0]['id'].'-s.jpg');?>
+															</a>
+															</div>
+															<p><?php echo $nail['title'];?></p>
+														</li>
+														<?php endforeach;?>
+														
+													</ul>
+												</div>
 											</li>
 											<li>
-												<span>
-												<?php echo img('wpdata/images/'.$s['Legs'][0]['images'][0]['id'].'-s.jpg');?>
-												</span>
-												<p>Legs</p>
+												<div class="dropdown-selector-container">
+													<span>
+													<?php 
+														echo img(array(
+																	'src' => 'wpdata/images/'.$s['Legs'][0]['images'][0]['id'].'-s.jpg',
+																	'id' => 'leg-image-'.$s['id']
+																	)
+																);
+													?>
+													</span>
+													<p>Legs</p>
+													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+													<ul class="dropdown">
+														<?php foreach($s['Legs_related'] as $leg):?>
+														<li>
+															<div style="height:60px">
+															<a href="#leg-image-<?php echo $s['id'];?>" class="product-option-selector" rel="leg" id="<?php echo $leg['type_id'];?>" itemid="<?php echo $s['id'];?>">
+															<?php echo img('wpdata/images/'.$leg['images'][0]['id'].'-s.jpg');?>
+															</a>
+															</div>
+															<p><?php echo $leg['title'];?></p>
+														</li>
+														<?php endforeach;?>
+														
+													</ul>
+												</div>
 											</li>
 										</ul>
 									</div>
@@ -359,7 +511,61 @@ function update_cart_item(id)
 		type: "POST",
 		data: 'size='+size+'&model='+model+'&id='+id
 	}).done(function(data){
-		console.log(data);
+		//console.log(data);
 	});
 }
+
+(function(){
+	$('.dropdown-toggle').click(function(){
+		$current = $(this).parent().children('.dropdown');
+		$('.dropdown').not($current).hide();
+		$current.toggle();
+		
+		return false;
+	});
+
+	$('.product-option-selector').click(function(){
+		$selector = $(this);
+		//console.log($selector);
+		images = $selector.find('img');
+		target = $selector.attr('href');
+
+		type_id = $selector.attr('id');
+		type = $selector.attr('rel');
+		shop_order_item_id = $selector.attr('itemid');
+
+		jQuery.ajax({
+			url: base_url + 'products/update_cart_item',
+			type: 'POST',
+			data: 'id='+shop_order_item_id+'&'+type+'='+type_id
+		}).done(function(data){
+			
+		}); 
+		//console.log(type_id);
+		//console.log(type);
+		//console.log(shop_order_item_id);
+		
+		//console.log(images.length);
+		//console.log(target);
+		//console.log(images);
+		//swap the image
+		if (images.length == 1)
+		{
+			$(target).attr('src', images.attr('src'));
+		}
+		if (images.length == 2)
+		{
+			target_images = $(target).find('img');
+			$(target_images[0]).attr('src', $(images[0]).attr('src'));
+			$(target_images[1]).attr('src', $(images[1]).attr('src'));
+		}
+		$('.dropdown').hide();
+		return false;
+	});
+
+	$('body').click(function(){
+		$('.dropdown').hide();
+	});
+})();
+
 </script>

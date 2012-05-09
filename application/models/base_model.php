@@ -44,27 +44,44 @@ class Base_model extends CI_Model {
 
 		$query = $this->db->get();
 		$data = $query->result_array();
+		
+		//load a related model
+		$this->load->model('Model_model');
 		foreach($data as $key => $value)
 		{
+			
 			//Model details
 			$result = $this->wp_item('model', array('wp_structure.title' => $value['model']), '*', TRUE);
 			$data[$key]['Model'] = $result;
 			//Fabric details
 			$result = $this->wp_item('fabric', array('wp_fabric.link' => $value['fabric']), '*', TRUE);
 			$data[$key]['Fabric'] = $result;
+			//Related Fabrics
+			$result = $this->Model_model->fabrics($data[$key]['Model'][0]['id']);
+			$data[$key]['Fabrics_related'] = $result;
+			
 			//Leather details
 			$result = $this->wp_item('leather', array('wp_leather.link' => $value['leather']),'*', TRUE);
 			$data[$key]['Leather'] = $result;
+			//Related Leathers
+			$result = $this->Model_model->leathers($data[$key]['Model'][0]['id']);
+			$data[$key]['Leathers_related'] = $result;
+			
 			//Nail details
 			$result = $this->wp_item('nail', array('wp_nail.link' => $value['nail']),'*', TRUE);
 			$data[$key]['Nail'] = $result;
+			//Related Nails
+			$result = $this->Model_model->nails($data[$key]['Model'][0]['id']);
+			$data[$key]['Nails_related'] = $result;
 			
 			//Leg details
 			$result = $this->wp_item('legs', array('wp_legs.link' => $value['leg']),'*', TRUE);
 			$data[$key]['Legs'] = $result;
-			
+			//Related Legs
+			$result = $this->Model_model->legs($data[$key]['Model'][0]['id']);
+			$data[$key]['Legs_related'] = $result;
 		}
-
+//pr($data);die();
 		return $data;
 	}
 	

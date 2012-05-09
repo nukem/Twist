@@ -353,6 +353,15 @@ div.listing ul li span.product-name {
 			selection = $(this);
 			target = selection.attr('href');
 			value = selection.attr('rel');
+
+			if(target == '#product-leather')
+			{
+				//unselect #product-fabric
+			}
+			if(target == '#product-fabric')
+			{
+				//unselect #product-leather
+			}
 			$(target).val(value);
 			lis = selection.parent().parent().parent().find('li > div').removeClass('selected-option');
 			selection.parent().addClass('selected-option');

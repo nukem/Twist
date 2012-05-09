@@ -16,14 +16,19 @@ class Products extends MY_Controller {
 		session_start(); 
 		$this->load->model('base_model');
 		$this->load->model('Model_model');
+		$this->load->model('Shop_order_model');
 		$this->load->helper('html');
 	}
   
   
 	public function billing_shipping_info()
 	{
-		if($_POST)// && $this->form_validation->run('billing_shipping_edit'))
+		if($_POST) /// && $this->form_validation->run('billing_shipping_edit'))
 		{
+			$data = $this->input->post('data');
+			
+			$this->Shop_order_model->save($data);
+			
 			redirect('products/order_review');
 		}
 		
@@ -33,10 +38,13 @@ class Products extends MY_Controller {
 	
 	public function order_review()
 	{
-		if($_POST && $this->form_validation->run('billing_shipping_edit'))
+		if($_POST)
 		{
-			redirect('products/order_review');
-		}
+			$data = $this->input->post('data');
+			$this->Shop_order_model->save($data);
+			//send post request to paypal?
+		}	
+		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();
 		
 		$data['main_content'] = 'products/order_review';
 		$this->load->view('template', $data);

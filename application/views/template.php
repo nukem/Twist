@@ -10,6 +10,7 @@
 <meta name="keywords" content="ProjectName" />
 <title>Twist Lifestyle</title>
 <link href="<?= base_url() ?>css/reset.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="<?= base_url() ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/style.css?t=<?php echo time();?>" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/sliderkit-core.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="<?= base_url() ?>css/font/stylesheet.css" rel="stylesheet" type="text/css" media="screen" />
@@ -17,7 +18,9 @@
 <!--[if lte IE 8]>
 	<link href="css/ie.css" rel="stylesheet" type="text/css" media="screen" />
 <![endif]-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+<!--  script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script -->
+<script src="<?php echo base_url();?>js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
 <script src="<?= base_url() ?>js/main.js?t=<?php echo time();?>" type="text/javascript"></script>
 <script src="<?= base_url() ?>js/jquery.sliderkit.1.8.js" type="text/javascript"></script>
 <script src="<?= base_url() ?>js/jquery.easing.1.3.min.js" type="text/javascript"></script>
