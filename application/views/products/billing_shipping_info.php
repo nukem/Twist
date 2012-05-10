@@ -32,21 +32,71 @@ label {
 .right-column {
 	width: 310px;
 	float: left;
-} 
+}
+.previous:visited {
+	color: #222;
+}
+.previous {
+	background: url(/img/buttons-bg2b.gif);
+}
+.previous:hover {
+	text-decoration:none;
+}
+.next {
+	background: url(/img/buttons-bg2.gif);
+}
+.previous,
+.next {
+	border: none;
+	
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: #222;
+	display: block;
+	font: bold 14px 'Droid Sans', Arial, Helvetica, sans-serif;
+	line-height: 30px;
+	text-align: center;
+	text-decoration: none;
+	width: 146px;
+	height: 27px;	
+}
+.next {
+	float: right;
+}
+.step-container {
+	width: 890px;
+	overflow: hidden;
+	margin: 0 0 13px 0;
+}
+.previous span,
+.next span {
+	font-size: 17px;
+}
+input[type="text"],
+input[type="email"] {
+	width: 230px;
+	padding: 2px;
+}
 </style>
 <div id="inner-content">
 	<div id="main-content" style="overflow:hidden;height:400px;">
 
 			<div class="steps" id="steps">
-				<img src="/img/step-1.gif">
-				<span id="step1" class="step-active">Contact Information</span>
-	            <span id="step2">Order Review</span>
-	            <span id="step3">Payment</span>
-	            <span id="step4">Done</span>
+				<img src="/img/step-4.gif" />
+				<span id="step1">Cover Fabric</span>
+	            <span id="step2">Nail Heads/Fittings</span>
+	            <span id="step3">Legs/Wood Finish</span>
+	            <span id="step4" class="step-active">Checkout</span>
 				<div class="clear"></div>
 			</div>
-		
+		<div class="step-container">
+			<button class="next">Next Step <span>»</span></button>
+			<a href="<?=base_url()?>products/checkout" class="previous"><span>«</span> Previous Step</a>
+		</div>
+			
 		<div id="content">
+		<p>&nbsp;</p>
 		<?php echo form_open('products/billing_shipping_info');?>
 			<div class="left-column">
 				<h3>Billing Information</h3>

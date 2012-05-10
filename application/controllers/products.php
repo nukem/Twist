@@ -19,6 +19,20 @@ class Products extends MY_Controller {
 		$this->load->model('Shop_order_model');
 		$this->load->helper('html');
 	}
+	
+	public function payment_summary()
+	{
+		if($_POST)
+		{
+			$data = $this->input->post('data');
+			$this->Shop_order_model->save($data);
+			//send post request to paypal?
+		}	
+		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();
+		
+		$data['main_content'] = 'products/payment_summary';
+		$this->load->view('template', $data);		
+	}
   
   
 	public function billing_shipping_info()
@@ -31,7 +45,7 @@ class Products extends MY_Controller {
 			
 			redirect('products/order_review');
 		}
-		
+		$data['shoppingcart_all'] =  $this->base_model->shoppingcart_items();
 		$data['main_content'] = 'products/billing_shipping_info';
 		$this->load->view('template', $data);
 	}

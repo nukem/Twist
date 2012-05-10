@@ -133,6 +133,8 @@
 	display: inline-block;
 	margin-top: 4px;
 	width: 72px;
+	margin-right: 12px;
+	vertical-align: top;
 }
 .product-options-container > ul > li > span{
 	overflow:hidden;
@@ -158,13 +160,13 @@
 	-moz-border-radius: 3px;
 	border-radius: 3px;	
 	position: relative;
-	padding: 4px 15px 4px 4px;
+	padding: 2px 15px 4px 4px;
 	background-color: #EFEFEF;
 }
 .dropdown-selector-container > p {
 	padding: 0;
-	line-height: 1.3em;
-	margin: 0;
+	line-height: 1.4em;
+	margin: 0px 0px 2px 0px;
 }
 .dropdown-toggle {
 	position: absolute;
@@ -205,6 +207,15 @@ background-clip: padding-box;
 	margin: 0px 4px 6px 0px;
 	vertical-align: top;
 }
+.dropdown > li.group-title {
+	display: block;
+	font-weight: bold;
+	margin: 4px 0px 0px 0px;
+	padding: 0;
+	height: 1.3em;
+	line-height: 1.3em;
+}
+
 .dropdown > li > p {
 	margin: 0;
 	padding:0;
@@ -220,6 +231,20 @@ background-clip: padding-box;
 	height: 100%;
 	width: 100%;
 }
+
+.product-options-container {
+	float: none;
+}
+
+.product-options-container > ul {
+	float: none;
+	position: relative;
+}
+.product-options-container > ul > li p {
+	padding: 0;
+	margin-bottom: 2px;
+}
+
 </style>
 <div class="box-container">
 	<div class="box-content">
@@ -301,131 +326,11 @@ background-clip: padding-box;
 
 					?>
 					<tr >													
-							<td style="width:320px">
+							<td style="width:200px" rowspan="2">
 								<div class="cartthumb">
 									<?php echo img('wpdata/images/'.$s['Model'][0]['images'][0]['id'].'-s.jpg');?>
 								</div>
-								<div class="option-container">
-									<div class="product-options-container">
-										<ul>
-											<li style="display:block; width: 98px; height:90px; ">
-												<div class="dropdown-selector-container">
-												<div class="cartfabric" style="overflow:hidden;padding:0;" id="cover-image-<?php echo $s['id'];?>" >
-											<?php 	if(!empty($s['Fabric'])):
-														$vartag = "Fabric";
-														if(count($s['Fabric']['0']['images']) > 1):
-															echo "<div style='height:50%'>";
-															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
-															echo "</div>";
-															echo "<div style='height:50%;'>";
-															echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');
-															echo "</div>";
-														else:
-															echo "<div style='height:50%'>";
-															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
-															echo "</div>";
-															echo "<div style='height:50%;'>";
-															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
-															echo "</div>";
-														endif;
-													elseif(!empty($s['Leather'])):
-														echo img('wpdata/images/'.$s['Leather'][0]['images'][0]['id'].'-s.jpg');
-														$vartag = "Leather";
-												 	endif;
-												echo "</div>";
-												echo "<p>$vartag</p>";
-											?>
-												<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
-												<ul class="dropdown" style="display:none;">
-												<?php foreach($s['Fabrics_related'] as $fabric):?>
-														<li>
-															<a href="#cover-image-<?php echo $s['id'];?>" class="product-option-selector" rel="fabric" id="<?php echo $fabric['type_id'];?>"  itemid="<?php echo $s['id'];?>">
-															<div style="overflow:hidden;padding:0;height:70px;" >
-															<?php 
-																if(!empty($fabric['images'][1]['id'])) 
-																{
-																	echo "<div style='height:50%'>";
-																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
-																	echo "</div>";
-																	echo "<div style='height:50%'>";
-																	echo img('wpdata/images/'.$fabric['images'][1]['id'].'-s.jpg');
-																	echo "</div>";
-																} else {
-																	echo "<div style='height:50%'>";
-																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
-																	echo "</div>";
-																	echo "<div style='height:50%'>";
-																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
-																	echo "</div>";
-																}
-															?>
-															</div>
-															</a>
-															<p><?php echo $fabric['title'];?></p>
-														</li>
-												<?php endforeach;?>
-													</ul>
-												</div>
-											</li>
-											<li>
-												<div class="dropdown-selector-container">
-													<span>
-													<?php 
-														echo img(array(
-																		'src' => 'wpdata/images/'.$s['Nail'][0]['images'][0]['id'].'-s.jpg',
-																		'id' => 'nail-image-'.$s['id']
-																	)
-																);
-													?>
-													</span>
-													<p>Nails</p>
-													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
-													<ul class="dropdown" style="display:none;">
-														<?php foreach($s['Nails_related'] as $nail):?>
-														<li>
-															<div style="height:60px; width:60px;">
-															<a href="#nail-image-<?php echo $s['id'];?>" class="product-option-selector" rel="nail" id="<?php echo $nail['type_id'];?>" itemid="<?php echo $s['id'];?>">
-															<?php echo img('wpdata/images/'.$nail['images'][0]['id'].'-s.jpg');?>
-															</a>
-															</div>
-															<p><?php echo $nail['title'];?></p>
-														</li>
-														<?php endforeach;?>
-														
-													</ul>
-												</div>
-											</li>
-											<li>
-												<div class="dropdown-selector-container">
-													<span>
-													<?php 
-														echo img(array(
-																	'src' => 'wpdata/images/'.$s['Legs'][0]['images'][0]['id'].'-s.jpg',
-																	'id' => 'leg-image-'.$s['id']
-																	)
-																);
-													?>
-													</span>
-													<p>Legs</p>
-													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
-													<ul class="dropdown">
-														<?php foreach($s['Legs_related'] as $leg):?>
-														<li>
-															<div style="height:60px">
-															<a href="#leg-image-<?php echo $s['id'];?>" class="product-option-selector" rel="leg" id="<?php echo $leg['type_id'];?>" itemid="<?php echo $s['id'];?>">
-															<?php echo img('wpdata/images/'.$leg['images'][0]['id'].'-s.jpg');?>
-															</a>
-															</div>
-															<p><?php echo $leg['title'];?></p>
-														</li>
-														<?php endforeach;?>
-														
-													</ul>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
+								
 								<div class="cartdesc"><br/>
 									<h5><?php echo $s['model'] . ' ' . $s['size']?> Size Bed</h5><br/>
 									
@@ -461,9 +366,172 @@ background-clip: padding-box;
 											<option>6</option><option>8</option><option>8</option><option>9</option><option>10</option>
 											</select>
 							</td>
-							<td class="money">$<span><?php echo number_format($s['price'], 2, '.', ' ') ?></span><br /><br />
-								<a href="?edit=<?php echo $s['id'] ?>" class="edit-cart-item" title="Edit Item">&nbsp;</a>&nbsp;&nbsp;
+							<td class="money" rowspan="2">$<span><?php echo number_format($s['price'], 2, '.', ' ') ?></span><br /><br />
+								
 								<a href="?remove=<?php echo $s['id'] ?>" class="remove-cart-item" title="Remove Item">&nbsp;</a>
+							</td>
+						</tr>
+						
+						<tr>
+							<td colspan="4" style="vertical-align:top;">
+								
+								<div class="option-container">
+									<div class="product-options-container">
+									
+										<ul>
+											<li style="width: 98px; height:90px; ">
+												
+											<?php 
+												if(!empty($s['Fabric']))
+												{
+													$vartag = 'Fabric';
+												} else {
+													$vartag = 'Leather';
+												}
+												
+											?>
+												<div class="dropdown-selector-container">
+												<p><?php echo $vartag?></p>
+											<?php 
+											 	if(!empty($s['Fabric'])):
+														echo '<div class="cartfabric" style="overflow:hidden;padding:0;" id="cover-image-'.$s['id'].'" >';
+														$vartag = "Fabric";
+														if(count($s['Fabric']['0']['images']) > 1):
+															echo "<div style='height:50%'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
+															echo "<div style='height:50%;'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][1]['id'].'-s.jpg');
+															echo "</div>";
+														else:
+															echo "<div style='height:50%'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
+															echo "<div style='height:50%;'>";
+															echo img('wpdata/images/'.$s['Fabric']['0']['images'][0]['id'].'-s.jpg');
+															echo "</div>";
+														endif;
+														$fabric_title = $s['Fabric'][0]['title'];
+													elseif(!empty($s['Leather'])):
+														echo '<div class="cartfabric" style="overflow:hidden;padding:0;" id="cover-image-'.$s['id'].'" >';
+														echo img('wpdata/images/'.$s['Leather'][0]['images'][0]['id'].'-s.jpg');
+														$vartag = "Leather";
+														$fabric_title = $s['Leather'][0]['title'];
+												 	endif;
+												 ?>
+												
+												</div>
+												<p id='cover-title-<?php echo $s['id'];?>'><?php echo $fabric_title;?></p>
+												<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+												<ul class="dropdown" style="display:none;">
+													<li class="group-title">Fabrics</li>
+												<?php foreach($s['Fabrics_related'] as $fabric):?>
+														<li>
+															
+															<div style="overflow:hidden;padding:0;height:70px;" >
+															<a href="#cover-image-<?php echo $s['id'];?>" class="product-option-selector" rel="fabric" id="<?php echo $fabric['type_id'];?>"  itemid="<?php echo $s['id'];?>">
+															<?php 
+																if(!empty($fabric['images'][1]['id'])) 
+																{
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][1]['id'].'-s.jpg');
+																	echo "</div>";
+																} else {
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																	echo "<div style='height:50%'>";
+																	echo img('wpdata/images/'.$fabric['images'][0]['id'].'-s.jpg');
+																	echo "</div>";
+																}
+															?>
+															</a>
+															</div>
+														
+															<p class="options-title"><?php echo $fabric['title'];?></p>
+														</li>
+												<?php endforeach;?>
+														<li class="group-title">Leathers</li>
+												<?php foreach($s['Leathers_related'] as $leather):?>
+														<li>
+															<div style="overflow:hidden;padding:0;height:70px;" >
+															<a href="#cover-image-<?php echo $s['id'];?>" class="product-option-selector" rel="leather" id="<?php echo $leather['type_id'];?>" itemid="<?php echo $s['id'];?>">
+															<?php echo img('wpdata/images/'.$leather['images'][0]['id'].'-s.jpg');?>
+															</a>
+															</div>
+															<p class="options-title"><?php echo $leather['title'];?></p>
+														</li>
+												<?php endforeach;?>
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="dropdown-selector-container">
+													<p>Nails</p>
+													<span>
+													<?php 
+														echo img(array(
+																		'src' => 'wpdata/images/'.$s['Nail'][0]['images'][0]['id'].'-s.jpg',
+																		'id' => 'nail-image-'.$s['id']
+																	)
+																);
+													?>
+													</span>
+													<p id="nail-option-title-<?php echo $s['id'];?>"><?php echo $s['Nail'][0]['title'];?></p>
+													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+													<ul class="dropdown" style="display:none;">
+														<?php foreach($s['Nails_related'] as $nail):?>
+														<li>
+															<div style="height:60px; width:60px;">
+															<a href="#nail-image-<?php echo $s['id'];?>" class="product-option-selector" rel="nail" id="<?php echo $nail['type_id'];?>" itemid="<?php echo $s['id'];?>">
+															<?php echo img('wpdata/images/'.$nail['images'][0]['id'].'-s.jpg');?>
+															</a>
+															</div>
+															<p class="options-title"><?php echo $nail['title'];?></p>
+														</li>
+														<?php endforeach;?>
+														
+													</ul>
+												</div>
+											</li>
+											<li>
+												<div class="dropdown-selector-container">
+													<p>Legs</p>
+													<span>
+													<?php 
+														echo img(array(
+																	'src' => 'wpdata/images/'.$s['Legs'][0]['images'][0]['id'].'-s.jpg',
+																	'id' => 'leg-image-'.$s['id']
+																	)
+																);
+													?>
+													</span>
+													<p id="leg-option-title-<?php echo $s['id'];?>"><?php echo $s['Legs'][0]['title'];?></p>
+													<a href="#" class="dropdown-toggle"><span class="icon-chevron-down"></span></a>
+													<ul class="dropdown">
+														<?php foreach($s['Legs_related'] as $leg):?>
+														<li>
+															<div style="height:60px">
+															<a href="#leg-image-<?php echo $s['id'];?>" class="product-option-selector" rel="leg" id="<?php echo $leg['type_id'];?>" itemid="<?php echo $s['id'];?>">
+															<?php echo img('wpdata/images/'.$leg['images'][0]['id'].'-s.jpg');?>
+															</a>
+															</div>
+															<p class="options-title" id="legs-option-title-<?php echo $s['id'];?>"><?php echo $leg['title'];?></p>
+														</li>
+														<?php endforeach;?>
+														
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+								
+								
+								
 							</td>
 						</tr>
 					<?php
@@ -534,6 +602,8 @@ function update_cart_item(id)
 		type = $selector.attr('rel');
 		shop_order_item_id = $selector.attr('itemid');
 
+		new_title = $selector.parent().parent().find('p.options-title').text();
+
 		jQuery.ajax({
 			url: base_url + 'products/update_cart_item',
 			type: 'POST',
@@ -541,13 +611,24 @@ function update_cart_item(id)
 		}).done(function(data){
 			
 		}); 
-		//console.log(type_id);
-		//console.log(type);
-		//console.log(shop_order_item_id);
+		console.log(type_id);
+		console.log(type);
+		console.log(shop_order_item_id);
 		
-		//console.log(images.length);
-		//console.log(target);
-		//console.log(images);
+		console.log(images.length);
+		console.log(target);
+		console.log(images);
+
+		//place the new title
+		if (type == 'fabric' || type == 'leather')
+		{
+			console.log('fabric or leather title');
+			$('#cover-title-' + shop_order_item_id).text(new_title);
+		} else {
+			console.log('others title');
+			$('#' + type + '-option-title-' + shop_order_item_id).text(new_title);
+		}
+		
 		//swap the image
 		if (images.length == 1)
 		{
@@ -558,6 +639,15 @@ function update_cart_item(id)
 			target_images = $(target).find('img');
 			$(target_images[0]).attr('src', $(images[0]).attr('src'));
 			$(target_images[1]).attr('src', $(images[1]).attr('src'));
+			$('#cover-title').html('Fabric');
+		}
+		//special case for leather
+		if(type == 'leather')
+		{
+			target_images = $(target).find('img');
+			$(target_images[0]).attr('src', $(images[0]).attr('src'));
+			$(target_images[1]).attr('src', $(images[0]).attr('src'));
+			$('#cover-title').html('Leather');
 		}
 		$('.dropdown').hide();
 		return false;
